@@ -1,0 +1,55 @@
+//Algoritmo BackTraking
+        static void Backtraking(string VI, string VF ,string comb,int k,bool[,] lista,int dist)
+        {
+            //retorna true o false del primer vertic concatenado
+            //evalua que los saltos 
+            if (dist < distanciaCorta && verticesRecorridos(comb) <= saltos)
+            {
+                if (conseguirPrimero(comb, VI))
+                {
+                    if (k == Int32.Parse(VF.ToString()))
+                    {
+                        Console.WriteLine(comb + dist);
+                        distanciaCorta = dist;
+                        caminoCorto = comb;
+
+                    }
+                    else
+                    {
+
+                        for (int i = k; i < n; i++)
+                        {
+                            //evalua que los vertices no se repitan 
+                            if (!lista[k, i])
+                            {
+                                lista[k, i] = true;
+                                for (int j = 0; j < n; j++)
+                                {
+                                    if (i != j && i != Int32.Parse(VF.ToString()))
+                                    {
+                                        //marca los vertices para que el programa lleve una linea coherente en los caminos
+                                        for (int h = 0; h < n; h++)
+                                            lista[i, h] = true;
+                                        //concatena y envia el vertice soguiente con el peso
+                                        Backtraking(VI, VF, comb + i + "," + j + " | ", j, lista, dist + matrizRutas[i, j]);
+                                    }
+                                }
+                                lista[k, i] = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                //si se sobre pasa retorna(poda)
+                else
+                {
+                    poda++;
+                    return;
+                }
+            }
+            else
+            {
+                poda++;
+                return;
+            }
+        }

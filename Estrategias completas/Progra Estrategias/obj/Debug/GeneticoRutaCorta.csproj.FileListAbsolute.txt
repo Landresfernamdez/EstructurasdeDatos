@@ -1,0 +1,18 @@
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\GeneticoRutaCorta\bin\Debug\GeneticoRutaCorta.exe.config
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\GeneticoRutaCorta\bin\Debug\GeneticoRutaCorta.exe
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\GeneticoRutaCorta\bin\Debug\GeneticoRutaCorta.pdb
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\GeneticoRutaCorta\obj\Debug\GeneticoRutaCorta.csprojResolveAssemblyReference.cache
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\GeneticoRutaCorta\obj\Debug\GeneticoRutaCorta.exe
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\GeneticoRutaCorta\obj\Debug\GeneticoRutaCorta.pdb
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\Progra Estrategias\bin\Debug\GeneticoRutaCorta.exe.config
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\Progra Estrategias\obj\Debug\GeneticoRutaCorta.exe
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\Progra Estrategias\obj\Debug\GeneticoRutaCorta.pdb
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\Progra Estrategias\bin\Debug\GeneticoRutaCorta.exe
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\Progra Estrategias\bin\Debug\GeneticoRutaCorta.pdb
+R:\Documentos\ANDRES lV Semestre\Analisis de Algoritmos\ll proyecto Algoritmos\Progra Estrategias\obj\Debug\GeneticoRutaCorta.csprojResolveAssemblyReference.cache
+C:\Users\Jurguen\Desktop\Progra Estrategias\bin\Debug\GeneticoRutaCorta.exe.config
+C:\Users\Jurguen\Desktop\Progra Estrategias\obj\Debug\GeneticoRutaCorta.exe
+C:\Users\Jurguen\Desktop\Progra Estrategias\obj\Debug\GeneticoRutaCorta.pdb
+C:\Users\Jurguen\Desktop\Progra Estrategias\bin\Debug\GeneticoRutaCorta.exe
+C:\Users\Jurguen\Desktop\Progra Estrategias\bin\Debug\GeneticoRutaCorta.pdb
+C:\Users\Jurguen\Desktop\Progra Estrategias\obj\Debug\GeneticoRutaCorta.csprojResolveAssemblyReference.cache

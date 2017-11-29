@@ -1,0 +1,3 @@
+http://castrovation.blogspot.com/2016/02/algoritmo-genetico-problema-del-viajante.html
+http://www.designemergente.org/emergence/algoritmo-genetico-para-el-problema-del-viajante
+https://github.com/fferegrino/tsp

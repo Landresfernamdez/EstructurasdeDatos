@@ -1,0 +1,194 @@
+Console.WriteLine("----------------Probabilistico---------------------\n");
+
+            distanciaCorta = 9999999999999999999;
+            crearMatrizFeromonas();
+            for (int i = 0; i < 56; i++)
+            {
+                probabilisticoHormigas(0, 4, 0, "",i);
+            }
+            Console.ReadKey();
+        }
+
+
+       
+
+        //------------probabilistico-------------
+
+
+        static double[] listaProbabilidadXY= new double[6];
+        static double fI = 0.1;
+        static double[,] matrizFeromonas = new double[n, n];
+        static bool[,] matrizVisitados = new bool[n,n];
+        //crea la matriz inicial de feromonas
+        static void crearMatrizFeromonas()
+        {
+            for(int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    matrizFeromonas[i, j] = (1 - 0.01) * fI;
+                }
+            }
+        }
+        //esta funcion agrega en la matriz de feromonas esto es donde cada hormiga al pasar va dejando su pequenna feromona
+        static void agregarEnMatriz(string combR,int costo)
+        {
+            string num1 = "";
+            string num2="";
+            bool band = false;
+            
+            for (int x = 0; x < combR.Length; x++)
+            {
+                if (combR[x] == 'C')
+                {
+                    break;
+                }
+                else if (combR[x] == '|')
+                {
+                    matrizFeromonas[Int32.Parse(num1), Int32.Parse(num2) ] = matrizFeromonas[Int32.Parse(num1), Int32.Parse(num2)] + (1.0 / costo);
+                    num2 = "";
+                    num1 = "";
+                }
+                else{
+                    if(combR[x]!=',' & band!=true){
+                        num1 = num1 + combR[x];
+                    }
+                    else if(combR[x] != ',' & band==true)
+                    {
+                        num2 = num2 + combR[x];
+                    }
+                    else
+                    {
+                        if (band)
+                        {
+                            band = false;
+                        }
+                        else
+                        {
+                            band = true;
+                        }
+                    }
+                }
+            }
+        }
+        //Imprime matriz feromonas
+        static void imprimirMatrizFeromonas()
+        {
+            string cadena="";
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    cadena=cadena+matrizFeromonas[i, j]+" | ";
+                }
+                cadena = cadena + "\n";
+            }
+            Console.WriteLine(cadena);
+        }
+        //calcula lasumatoria de todos los vertices
+        static double calcularSumatoria(int VI)
+        {
+            double sumatoria = 0.0;
+            // Consigue los numeros de la sumatoria
+            for (int i = 0; i < n; i++)
+            {
+                if (matrizRutas[VI, i] != 0)
+                {
+                    sumatoria = sumatoria + (fI * (1.0 / (double)matrizRutas[VI, i]));
+                }
+            }
+            return sumatoria;
+        }
+        static void calcularVisibilidad(int VI,double sumatoria)
+        {
+            // a partir de la formula saca el porcentaje de cada numero
+            int aux = 1;
+            for (int i = 0; i < n; i++)
+            {
+                if (matrizRutas[VI, i] != 0)
+                {
+                    //se saca el la visibilidad la cual es el inverso del costo de camino
+                    if (i == 0)
+                    {
+                        listaProbabilidadXY[i] = ((fI * (1.0 / (double)matrizRutas[VI, i])) / sumatoria);
+                    }
+                    else
+                    {
+                        listaProbabilidadXY[i] = listaProbabilidadXY[i - aux] + ((fI * (1.0 / (double)matrizRutas[VI, i])) / sumatoria);
+                        aux = 1;
+                    }
+                }
+                else
+                {
+                    if (i == 0)
+                    {
+                        aux = 1;
+                    }
+                    else
+                    {
+                        aux = 2;
+                    }
+                    listaProbabilidadXY[i] = 0;
+                }
+            }
+        }
+        //funcion para algoritmo probabilista
+        static void probabilisticoHormigas(int VI, int VF,int costo,string combRutas,int hormiga)
+        {
+            double sumatoria=calcularSumatoria(VI);
+            
+            calcularVisibilidad(VI, sumatoria);
+
+            Random rnd = new Random();
+            double numA = rnd.NextDouble();
+            //intentando tomar un camino
+            for (int i = 0; i < n; i++)
+            {
+                if (numA <= listaProbabilidadXY[i] & listaProbabilidadXY[i] != 0)
+                {
+                    
+                    //manda el siguiente vertice que fue la hormiga
+                    if (VF != i)
+                    {
+                        if (!matrizVisitados[i, 0])
+                        {
+                            costo += matrizRutas[VI, i];
+                            //marca toda la fila true para que no se regrese a este vertice
+                            for (int j = 0; j < n; j++)
+                            {
+                                matrizVisitados[VI, j] = true;
+                            }
+                            //envia a la hormiga seguir eligiendo rutas
+                            cantiArcosVisitados++;
+                            probabilisticoHormigas(i, VF, costo, combRutas + VI + "," + i + "|",hormiga);
+                            break;
+                        }
+                        else
+                        {
+                            //la hormiga quer'ia regresarse entonces se cambia el randon y se hace que se evalue de nuevo
+                            //esto para no repetir verices
+                            numA = rnd.NextDouble();
+                            i = 0;
+                        }
+                    }
+
+                    else
+                    {
+                        cantiArcosVisitados++;
+                        costo += matrizRutas[VI, i];
+                        combRutas = combRutas + VI + "," + i + "|" + "costo " + costo;
+                        if (distanciaCorta >= costo)
+                        {
+                            distanciaCorta = costo;
+                            Console.WriteLine("Hormiga " + hormiga + " Rutas " + combRutas);
+                        }
+                        agregarEnMatriz(combRutas,costo);
+                        imprimirMatrizFeromonas();
+                        break;
+
+                    }
+                }                
+            }
+        }
+
+
